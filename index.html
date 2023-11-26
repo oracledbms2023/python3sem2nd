@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    .t{
+        font-size: 30px;
+        font: 500;
+    }
+    </style>
+</head>
+
+<br>
+    <a href="#1"> link 1 </a></br>
+    <a href="#2"> link 2 </a></br>
+    <a href="#3"> link 3 </a></br>
+    <a href="#4"> link 4 </a></br>
+    <a href="#5"> link 5 </a></br>
+    <h4 id="1" class="t"> lab 6 </h4>
+    <pre>
+        <h4>2. Import and display the Automobile dataset</h4>
+        <img src="" alt="">
+        import pandas as pd
+        Automobile_data =pd.read_csv("D:/Sem 3 B.Voc/Python for Data Science/notes/unit
+        3/csv/AUTOMOBILE_DATA.csv", sep=",", header=0)
+        Automobile_data
+
+        <h4>3. Clean the unwanted data(NaN) or missing data with the value as 420 and
+            update the CSV file.
+            </h4>
+        import numpy as np
+        import pandas as pd
+        Automobile_data=pd.read_csv("D:/Sem 3 B.Voc/Python for Data Science/notes/unit
+        3/csv/AUTOMOBILE_DATA.csv")
+        Automobile_data['PRICE']=Automobile_data['PRICE'].fillna(420)
+        Automobile_data
+
+        <h4>4. Update the CSV file with new value and name the new file as
+            AUTOMOBILE_DATA1.CSV
+            </h4>
+        import pandas as pd
+        Automobile_data.to_csv(path_or_buf="D:/Sem 3 B.Voc/Python for Data Science/notes/unit
+        3/csv/AUTOMOBILE_DATA1.csv", sep=',')
+
+<h4>5. Find the most Expensive Car from the recent updated CSV file</h4>
+        import pandas as pd
+        Automobile_Data = pd.read_csv('D:/Sem 3 B.Voc/Python for Data Science/notes/unit
+        3/csv/AUTOMOBILE_DATA1.csv')
+        Automobile_Data = Automobile_Data
+        [['COMPANY','PRICE']][Automobile_Data.PRICE==Automobile_Data['PRICE'].max()]
+        Automobile_Data
+
+<h4>6. Find each Company's highest price car.</h4>
+        import pandas as pd
+        Automobile_Data = pd.read_csv('D:/Sem 3 B.Voc/Python for Data Science/notes/unit
+        3/csv/AUTOMOBILE_DATA1.csv')
+        car_Manufacturers = Automobile_Data .groupby('COMPANY')
+        higpricecarDf = car_Manufacturers['COMPANY','PRICE'].max()
+        higpricecarDf
+
+        higpricecarDf.drop(columns=['COMPANY'],inplace=True)
+        print(higpricecarDf)
+
+        
+</pre>
+
+    <h4 id="2" class="t"> lab 7 </h4>
+    <pre>
+        <h4>a . Read Total profit of all months and show it using a line plot.</h4>
+        import pandas as pd
+        import matplotlib.pyplot as plt
+        df = pd.read_csv("D:/Sem 3 B.Voc/Python for Data Science/notes/unit 4/New
+        folder/company_sales_data.csv")
+        profitList = df ['total_profit'].tolist()
+        monthList = df ['month_number'].tolist()
+        plt.plot(monthList, profitList)
+        plt.xlabel('Month number')
+        plt.ylabel('Profit in dollar')
+        plt.xticks(monthList)
+        plt.title('Company profit per month')
+        plt.yticks([100000, 200000, 300000, 400000, 500000])
+        plt.show()
+
+        <h4>b. Read all product sales data and show it using a multiline plot</h4>
+        import pandas as pd
+        import matplotlib.pyplot as plt
+        df = pd.read_csv("D:/Sem 3 B.Voc/Python for Data Science/notes/unit 4/New
+        folder/company_sales_data.csv")
+        monthList = df ['month_number'].tolist()
+        faceCremSalesData = df ['facecream'].tolist()
+        faceWashSalesData = df ['facewash'].tolist()
+        toothPasteSalesData = df ['toothpaste'].tolist()
+        bathingsoapSalesData = df ['bathingsoap'].tolist()
+        shampooSalesData = df ['shampoo'].tolist()
+        moisturizerSalesData = df ['moisturizer'].tolist()
+        plt.plot(monthList, faceCremSalesData, label = 'Face cream Sales Data', marker='o',
+        linewidth=3)
+        plt.plot(monthList, faceWashSalesData, label = 'Face Wash Sales Data', marker='o',
+        linewidth=3)
+        plt.plot(monthList, toothPasteSalesData, label = 'ToothPaste Sales Data', marker='o',
+        linewidth=3)
+        plt.plot(monthList, bathingsoapSalesData, label = 'BathingSoap Sales Data', marker='o',
+        linewidth=3)
+        plt.plot(monthList, shampooSalesData, label = 'Shampoo Sales Data', marker='o',
+        linewidth=3)
+        plt.plot(monthList, moisturizerSalesData, label = 'Moisturizer Sales Data', marker='o',
+        linewidth=3)
+        plt.xlabel('Month Number')
+        plt.ylabel('Sales units in number')
+        plt.legend(loc='upper left')
+        plt.xticks(monthList)
+        plt.yticks([1000, 2000, 4000, 6000, 8000, 10000, 12000, 15000, 18000])
+        plt.title('Sales data')
+        plt.show()
+
+
+        <h4>c. Calculate total sale data for last year for each product and show it using a Pie chart.</h4>
+        import pandas as pd
+        import matplotlib.pyplot as plt
+        df = pd.read_csv("D:/Sem 3 B.Voc/Python for Data Science/notes/unit 4/New
+        folder/company_sales_data.csv")
+        monthList = df ['month_number'].tolist()
+        labels = ['FaceCream', 'FaseWash', 'ToothPaste', 'Bathing soap', 'Shampoo', 'Moisturizer']
+        salesData = [df ['facecream'].sum(), df ['facewash'].sum(), df ['toothpaste'].sum(),
+        df ['bathingsoap'].sum(), df ['shampoo'].sum(), df ['moisturizer'].sum()]
+        plt.axis("equal")
+        plt.pie(salesData, labels=labels, autopct='%1.1f%%')
+        plt.legend(loc=(1,0.3))
+        plt.title('Sales data')
+        plt.show()
+
+</pre>
+
+    <h4 id="3" class="t"> lab 8 </h4>
+    <pre>
+        import numpy as np
+        import pandas as pd
+        import matplotlib.pyplot as plt
+        df1 = pd.read_csv("D:/Sem 3 B.Voc/Python for Data Science/notes/unit 4/New
+        folder/SAheart.csv")
+        df1
+
+        df1.head(10)
+
+        df1=pd.crosstab(df1.famhist, df1.chd)
+        df1
+
+        <h4>a .. Draw a Bar plot to show the number of person having CHD or not in
+            comparison to they having family history of the disease
+            or not.
+            </h4>
+        df1.plot.bar()
+
+        <h4>b ..Find out the number of CHD cases in different age categories. Do a Bar Plot
+            and sort them in the order of age groups</h4>
+        df1 = pd.crosstab(df1.age, df1.chd)
+        df1
+
+        df1.plot.bar(figsize=(20,10))
+        plt.xlabel("Ages")
+        plt.ylabel("Counts")
+
+
+
+</pre>
+
+    <h4 id="4" class="t"> lab 9 </h4>
+    <pre>
+        import numpy as np
+        import pandas as pd
+        import matplotlib.pyplot as plt
+        df = pd.read_csv("D:/Sem 3 B.Voc/Python for Data Science/notes/unit 4/New
+        folder/Iris.csv")
+        df
+
+        df.head(50)
+
+        df[50:100]
+
+        from pandas.api.types import is_numeric_dtype
+        for col in data.columns:
+        if is_numeric_dtype(data[col]):
+        print('%s:' % (col))
+        print('\t Mean = %.2f' % data[col].mean())
+        print('\t Median = %.2f' % data[col].median())
+        print('\t Standard deviation = %.2f' % data[col].std())
+        print('\t Minimum = %.2f' % data[col].min())
+        print('\t Maximum = %.2f' % data[col].max())
+
+        # count the frequency for each of its distinct values.
+        data['class'].value_counts()
+
+        data.describe(include='all')
+
+<h4>a ..Find the mean, median, standard deviation of iris's sepal length (1st Column).</h4>
+        df = "D:/Sem 3 B.Voc/Python for Data Science/notes/unit 4/New folder/iris.data"
+        iris = np.genfromtxt(df, delimiter=',', dtype='object')
+        sepallength = np.genfromtxt(df, delimiter=',', dtype='float', usecols=[0])
+        A = np.mean(sepallength)
+        B = np.median(sepallength)
+        C = np.std(sepallength)
+        print("\n----Calculate Mean-----\n")
+        print(A)
+        print("\n---- Calculate Median ---- \n")
+        print(B)
+        print("\n---- Calculate Standard deviation ---- \n")
+        print(C)
+
+        <h4>b..Create a normalized form of iris's sepal length whose values range exactly bet
+            ween 0 and 1 so that the minimum has value 0 and maximum has value 1.</h4>
+        df = "D:/Sem 3 B.Voc/Python for Data Science/notes/unit 4/New folder/iris.data"
+        sepallength = np.genfromtxt(df, delimiter=',', dtype='float', usecols=[0])
+        Smax, Smin = sepallength.max(), sepallength.min()
+        (sepallength - Smin)/(Smax - Smin)
+
+        data.head(50)
+
+        <h4>c ..Find the number and position of missing values in iris's sepal length (1st colu
+            mn).</h4>
+        df ="D:/Sem 3 B.Voc/Python for Data Science/notes/unit 4/New folder/iris.data"
+        iris_2d = np.genfromtxt(df, delimiter=',', dtype='float')
+        iris_2d[np.random.randint(150, size=20), np.random.randint(4, size=20)] = np.nan
+        print(iris_2d)
+
+
+        # Number of missing values
+        X = np.isnan(iris_2d[:, 0]).sum()
+        # Position of missing values
+        Y = np.where(np.isnan(iris_2d[:, 0]))
+        print("\n----Number of missing values ---- \n")
+        print(X)
+        print("\n---- Position of missing values ----\n")
+        print(Y)
+
+
+</pre>
+
+    <h4 id="5" class="t"> lab 10 </h4>
+    <pre>
+        import pandas as pd
+        ResultSheet={
+        'Arnab': pd.Series([45, 91, 97],
+        index=['Maths','Science','Hindi']),
+        'Ramit': pd.Series([70, 81, 96],
+        index=['Maths','Science','Hindi']),
+        'Samridhi': pd.Series([89, 91, 88],
+        index=['Maths','Science','Hindi']),
+        'Riya': pd.Series([81, 71, 67],
+        index=['Maths','Science','Hindi']),
+        'Mallika': pd.Series([94, 95, 99],
+        index=['Maths','Science','Hindi']),
+        'Shiv': pd.Series([25, 50, 75],
+        index=['Maths','Science','Hindi'])}
+        ResultDF = pd.DataFrame(ResultSheet)
+        ResultDF
+
+        <h4>1.After creating the dataframe export the data to your local storage and save the
+            file Student_Result.CSV?
+            </h4>
+        ResultDF.to_csv(path_or_buf='C:/Users/shivaraj/Desktop/Dataset/Student_Result.CSV', sep=',')
+
+
+        <h4>2.Import Student_Result.CSV and Draw a line plot for the dataset and apply ma
+            rker as " * ", markersize = 10, linestyle = "- -" and linewidth = 3 and creates plot
+            of different color for each student, Set title to "Unit Test Report", Label x axis a
+            s "Subjects", and Label y axis as "Marks in Rs"?
+            </h4>
+        Maker ="*"
+        markersize=10
+        linestyle="--"
+        Linewidth =3
+        import pandas as pd
+        import matplotlib.pyplot as plt
+        df = ResultDF
+        #creates plot of different color for each student
+        df.plot(kind='line', color=['red','blue','brown','y','m','c'],marker="*",markersize=10,linewidth=
+        3,linestyle="--")
+        # Set title to "Unit Test Report"
+        plt.title('Unit Test Report')
+        plt.grid(True)
+        # Label x axis as "Subjects"
+        plt.xlabel('Subjects')
+        # Label y axis as "Marks in Rs"
+        plt.ylabel('Marks')
+        plt.show()
+
+<h4>3.Import Student_Result.CSV and Draw a bar chart for the dataset and apply dif
+    ferent color for each student, edgecolor as magenta, linewidth as 2 and linestyle
+    as Dashdot, title as Student_Result, XLabel as Subjects, and YLabel as Marks i
+    n Each subject?</h4>
+        import pandas as pd
+        import matplotlib.pyplot as plt
+        df=pd.read_csv("C:/Users/shivaraj/Desktop/Dataset/Student_Result.CSV")
+        df.plot(kind='bar',title='Student_Result',color=['b','r','k','y','c','black'], edgecolor='m',linewidth
+        =2,linestyle='-.')
+        positions = (0, 1, 2)
+        labels = ("Maths", "Science", "Hindi")
+        plt.xticks(positions, labels)
+        # Label x axis as "Subjects"
+        plt.xlabel('Subjects')
+        plt.legend(loc=(1,0.4))
+        #set title for ylabel
+        plt.ylabel('Marks in Each Subject')
+        plt.show()
+
+        ResultDF
+
+<h4>4. Draw a scatter plot for each subject vs Number of students and use the with t
+    he following customization for the scatter plot like size=500,color='red',linewi
+    dth=3,marker='*',edgecolor='blue'?</h4>
+        import numpy as np
+        import matplotlib.pyplot as plt
+        Marks = np.array([45,70,89,81,94,25])
+        StuName = np.array(['Arnab', 'Ramit','Samridhi','Riya','Mallika','Shiv'])
+        plt.scatter(x=Marks,y=StuName,s=500,color='red',linewidth=3,marker='*',edgecolor='blue')
+        plt.title('All Students Marks in Maths')
+        plt.xlabel('Marks Scored')
+        plt.ylabel('Students Name')
+        plt.show()
+
+
+        Marks = np.array([91,81,91,71,95,50])
+        StuName = np.array(['Arnab', 'Ramit','Samridhi','Riya','Mallika','Shiv'])
+        plt.scatter(x=Marks,y=StuName,s=500,color='red',linewidth=3,marker='*',edgecolor='blue')
+        plt.title('All Students Marks in Science')
+        plt.xlabel('Marks Scored')
+        plt.ylabel('Students Name')
+        plt.show()
+
+        Marks = np.array([97,96,88,67,99,75])
+        StuName = np.array(['Arnab', 'Ramit','Samridhi','Riya','Mallika','Shiv'])
+        plt.scatter(x=Marks,y=StuName,s=500,color='red',linewidth=3,marker='*',edgecolor='blue')
+        plt.title('All Students Marks in Hindi')
+        plt.xlabel('Marks Scored')
+        plt.ylabel('Students Name')
+        plt.show()
+    </pre>
+
+    <img src="images/exam 1.png" alt=""><br>
+    <img src="images/exam 2.png" alt=""><br>
+    <img src="images/exam 3.png" alt=""><br>
+    <img src="images/exam 4.png" alt="">
+
+</body>
+
+</html>
